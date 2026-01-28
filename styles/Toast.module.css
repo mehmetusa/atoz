@@ -1,0 +1,28 @@
+.toast {
+  position: fixed;
+  top: 50%; /* vertically centered */
+  left: 50%; /* horizontally centered */
+  transform: translate(-50%, -50%);
+  background-color: var(--pc);
+  color: var(--sc); /* dark rose pink text */
+  padding: 1rem 1.8rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--blk);
+  z-index: 1000;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  animation: fadeInScale 0.3s ease-out;
+}
+
+/* Entry animation */
+@keyframes fadeInScale {
+  from {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}

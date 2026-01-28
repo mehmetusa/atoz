@@ -1,0 +1,207 @@
+/* ====== Container ====== */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: var(--pc);
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  font-family: var(--sf);
+}
+
+/* ====== Form Items ====== */
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--sc);
+}
+
+/* ====== Inputs ====== */
+.inputField {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--lg);
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+.inputField:focus {
+  outline: none;
+  border-color: var(--sc);
+}
+
+/* Small input variations (like price fields) */
+.inputSm {
+  width: 100px;
+}
+
+/* Discount input */
+.discountInput {
+  width: 100px;
+}
+
+/* ====== Select Dropdown ====== */
+.selectField {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--lg);
+  font-size: 14px;
+}
+
+/* ====== File Upload & Preview ====== */
+.previewContainer {
+  display: flex;
+  gap: 10px;
+
+  margin-top: 8px;
+}
+
+.previewImg {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* File select button */
+.addButton {
+  background-color: var(--sc);
+  color: var(--bc);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.addButton:hover {
+  background-color: var(--sc);
+}
+
+/* ====== Extra Options ====== */
+.extra {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.extraButton {
+  background-color: var(--sc);
+  color: var(--bc);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.extraButton:hover {
+  background-color: var(--sc);
+}
+
+.extraItems {
+  display: flex;
+  gap: 8px;
+
+  margin-top: 6px;
+}
+
+.extraItem {
+  background-color: var(--pc);
+  color: var(--sc);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* ====== Dynamic Fields (Ingredients / Extras) ====== */
+.dynamicField {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.dynamicField input {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--lg);
+  font-size: 14px;
+}
+.dynamicField button {
+  background-color: var(--sc);
+  color: var(--bc);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.dynamicField button:hover {
+  background-color: var(--sc);
+}
+
+/* ====== Checkboxes ====== */
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  color: var(--sc);
+}
+
+/* ====== Actions Buttons ====== */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cancelButton {
+  background: var(--lg);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.createButton {
+  background: var(--grn);
+  color: var(--bc);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.createButton:disabled {
+  background: var(--lg);
+  cursor: not-allowed;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+  .previewImg {
+    width: 50px;
+    height: 50px;
+  }
+  .inputSm,
+  .discountInput {
+    width: 80px;
+  }
+  .dynamicField {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .extra {
+    flex-direction: column;
+  }
+}

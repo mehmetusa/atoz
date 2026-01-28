@@ -1,0 +1,197 @@
+/* ===== Container ===== */
+.container {
+  padding: 1rem;
+  font-family: var(--sf);
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+/* ===== Header ===== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  font-size: 32px;
+  color: var(--sc);
+  font-weight: 700;
+}
+
+.header button {
+  background: var(--pc);
+  color: var(--sc);
+  border: 2px solid var(--sc);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.header button:hover {
+  background: var(--sc);
+  color: var(--wht);
+  transform: translateY(-2px);
+}
+
+/* ===== Filters ===== */
+.filters {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--bc);
+  font-size: 16px;
+  background-color: var(--pc);
+  color: var(--blk);
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    border 0.2s,
+    box-shadow 0.2s;
+}
+
+.select:focus {
+  border-color: var(--pc);
+  box-shadow: 0 0 5px var(--sc);
+  outline: none;
+}
+
+/* ===== Buttons ===== */
+.button {
+  background: var(--sc);
+  color: var(--bc);
+  border: none;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 0.5rem;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+/* ===== Table Wrapper ===== */
+.tableWrapper {
+  overflow-x: auto;
+  background: var(--wht);
+  border-radius: 8px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  min-width: 300px;
+}
+
+.table th,
+.table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--sc);
+  text-align: center;
+  vertical-align: top;
+}
+
+.table th {
+  background-color: var(--sc);
+  color: var(--pc);
+  font-weight: 700;
+}
+
+/* ===== Expanded Details ===== */
+.detailsRow td {
+  background-color: var(--pc);
+  padding: 20px;
+}
+
+.details h4 {
+  margin: 12px 0 6px;
+  font-size: 18px;
+  color: var(--sc);
+  font-weight: 600;
+}
+
+.details p {
+  margin: 4px 0;
+  font-size: 15px;
+}
+
+.details ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+  list-style: disc;
+  font-size: 14px;
+}
+
+/* ===== Pagination ===== */
+.pagination {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.detailsRowFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+.customerInfo,
+.summary {
+  flex: 1;
+  background: var(--pc);
+  border: 1px solid var(--bc);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.customerInfo h4,
+.summary h4 {
+  margin-bottom: 12px;
+  color: var(--sc);
+  font-weight: 700;
+}
+
+/* ===== Responsive ===== */
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .filters {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .table th,
+  .table td {
+    padding: 10px 6px;
+    font-size: 14px;
+  }
+
+  .table {
+    min-width: 100%;
+  }
+}

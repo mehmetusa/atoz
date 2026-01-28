@@ -1,0 +1,157 @@
+version: '3.8'
+
+services:
+  # Web UI + API
+  web:
+    build: ./app
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+      - redis
+    restart: always
+
+  # Worker (Keepa scan + Scheduler)
+  worker:
+    build: ./app
+    command: node workers/keepaWorker.js
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+      - redis
+    restart: always
+
+  # Scheduler process (cron / automatic scan)
+  scheduler:
+    build: ./app
+    command: node workers/scheduler.js
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+      - redis
+    restart: always
+
+  # MongoDB
+  mongo:
+    image: mongo:7
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - mongo_data:/data/db
+
+  # Redis Queue
+  redis:
+    image: redis:7
+    restart: always
+    volumes:
+      - redis_data:/data
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6379:6379"
+
+volumes:
+  mongo_data:
+  redis_data:
+
+
+# version: '3.8'
+
+# services:
+#   web:
+#     build: ./app
+#     ports:
+#       - "3000:3000"
+#     env_file: .env
+#     depends_on:
+#       - mongo
+#       - redis
+
+#   worker:
+#     build: ./app
+#     command: node workers/keepaWorker.js
+#     env_file: .env
+#     depends_on:
+#       - mongo
+#       - redis
+
+#   mongo:
+#     image: mongo:7
+#     restart: always
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: root
+#       MONGO_INITDB_ROOT_PASSWORD: example
+#     volumes:
+#       - mongo_data:/data/db
+
+#   redis:
+#     image: redis:7
+#     restart: always
+#     volumes:
+#       - redis_data:/data
+
+# volumes:
+#   mongo_data:
+#   redis_data:
+
+
+# version: '3.8'
+
+# services:
+#   # Next.js Dashboard + API
+#   web:
+#     image: node:20
+#     working_dir: /app
+#     volumes:
+#       - ./app:/app
+#     command: sh -c "npm install && npm run dev"
+#     ports:
+#       - "3000:3000"
+#     env_file:
+#       - .env
+#     depends_on:
+#       - mongo
+#       - redis
+
+#   # Worker
+#   worker:
+#     image: node:20
+#     working_dir: /app
+#     volumes:
+#       - ./app:/app
+#     command: sh -c "npm install && node workers/keepaWorker.js"
+#     env_file:
+#       - .env
+#     depends_on:
+#       - mongo
+#       - redis
+
+#   # MongoDB
+#   mongo:
+#     image: mongo:7
+#     restart: always
+#     ports:
+#       - "27017:27017"
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: root
+#       MONGO_INITDB_ROOT_PASSWORD: example
+#     volumes:
+#       - mongo_data:/data/db
+
+#   # Redis
+#   redis:
+#     image: redis:7
+#     restart: always
+#     ports:
+#       - "6379:6379"
+#     volumes:
+#       - redis_data:/data
+
+# volumes:
+#   mongo_data:
+#   redis_data:

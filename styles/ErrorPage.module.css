@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px 20px;
+  min-height: 80vh;
+}
+
+.image {
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: var(--sc);
+  color: var(--wht);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: var(--sc);
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  /* h1 {
+      font-size: 1.5rem;
+    }
+    .button {
+      width: 100%;
+      padding: 12px 0;
+    } */
+}

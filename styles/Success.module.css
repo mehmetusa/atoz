@@ -1,0 +1,75 @@
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 20px;
+  font-family: var(--sf);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--sc);
+  text-align: center;
+}
+
+.greeting {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logoContact {
+  width: 240px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  background-color: var(--pc);
+  border-radius: 8px;
+  padding: 25px;
+  border: 1px solid var(--sc);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.summaryRow.total {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--sc);
+}
+
+.itemsList {
+  list-style: disc;
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.deliveryInfo p {
+  margin: 4px 0;
+  font-size: 16px;
+}
+
+.error {
+  padding: 2rem;
+  color: red;
+  text-align: center;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .summaryRow,
+  .deliveryInfo p,
+  .itemsList li {
+    font-size: 15px;
+  }
+}

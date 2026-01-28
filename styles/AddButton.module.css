@@ -1,0 +1,17 @@
+.addNewProductButton {
+  padding: 10px 20px;
+  background-color: var(--pc);
+  color: var(--bc);
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 4px 10px var(--sc);
+}
+
+.addNewProductButton:hover {
+  background-color: var(--sc);
+  transform: translateY(-2px);
+}

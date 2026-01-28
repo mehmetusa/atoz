@@ -1,0 +1,119 @@
+.container {
+  padding: 20px;
+}
+
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--lg);
+}
+
+.table th,
+.table td {
+  border: 1px solid var(--dg);
+  padding: 10px;
+  text-align: left;
+}
+
+.table th {
+  background-color: var(--lg);
+}
+
+.select {
+  padding: 5px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--dg);
+  cursor: pointer;
+  min-width: 100px;
+}
+
+/* ========================= */
+/* Status colors             */
+/* ========================= */
+.status-ready {
+  color: var(--dg);
+  background-color: var(--grn);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.status-given {
+  color: var(--lg);
+  background-color: var(--red);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.status-used {
+  color: var(--sc);
+  background-color: var(--blu);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ========================= */
+/* Responsive for mobile      */
+/* ========================= */
+@media (max-width: 768px) {
+  .table,
+  .table thead,
+  .table tbody,
+  .table th,
+  .table td,
+  .table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .table thead tr {
+    display: none; /* hide header */
+  }
+
+  .table tr {
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--lg);
+    padding: 10px;
+    background: var(--dg);
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+
+  .table tr:hover {
+    background: var(--lg);
+  }
+
+  .table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    width: calc(50% - 30px);
+    font-weight: bold;
+    text-align: left;
+  }
+
+  /* Full-width select for Actions */
+  .select {
+    width: 100%;
+    min-width: unset;
+  }
+}

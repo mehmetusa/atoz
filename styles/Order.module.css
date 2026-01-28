@@ -1,0 +1,396 @@
+/* ===========================
+   🔹 Container & Layout
+=========================== */
+/* Prevent horizontal overflow globally */
+.container {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  font-family: var(--sf);
+  color: var(--blk);
+  box-sizing: border-box;
+}
+
+.left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.right {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* ===========================
+   🔹 Table
+=========================== */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  min-width: 300px;
+  background: var(--wht);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 6px 6px 18px var(--blk);
+}
+
+.trTitle {
+  background-color: var(--wht) 0f6;
+  color: var(--sc);
+  font-weight: 600;
+}
+
+.tr {
+  background-color: var(--pc);
+}
+
+.tr td,
+.tr th {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--lg);
+  vertical-align: top;
+}
+
+.id {
+  font-weight: 600;
+  color: var(--sc);
+}
+
+.name,
+.email,
+.phone,
+.address,
+.total {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+/* ===========================
+   🔹 Status Tracker
+=========================== */
+.row {
+  display: flex;
+  gap: 1rem;
+}
+
+.row span {
+  font-weight: 700;
+}
+
+.done,
+.inProgress,
+.undone {
+  flex: 1;
+  background: var(--wht);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 6px 18px var(--blk);
+}
+
+.done {
+  background-color: var(--grn);
+}
+
+.inProgress {
+  background-color: var(--wht);
+}
+
+.undone {
+  background-color: var(--lg);
+}
+
+.checkedIcon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.delivery {
+  font-size: large;
+  font-weight: 600;
+}
+
+/* ===========================
+   🔹 Items
+=========================== */
+.item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--wht) 0f6;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px var(--blk);
+  margin-bottom: 1rem;
+}
+
+.itemDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.itemTitle {
+  font-weight: 600;
+  color: var(--sc);
+  font-size: 1.1rem;
+}
+
+/* ===========================
+   🔹 Extras
+=========================== */
+.extras {
+  display: flex;
+
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.extra {
+  background: var(--wht) 5f8;
+  color: var(--sc);
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+/* ===========================
+   🔹 Delivery Info
+=========================== */
+.delivery {
+  background: var(--wht) 0f6;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px var(--blk);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* ===========================
+   🔹 Cart Summary
+=========================== */
+.wrapper {
+  background: var(--wht) 0f6;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px var(--blk);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--sc);
+  margin-bottom: 0.5rem;
+}
+
+.totalText {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+
+.totalLast {
+  font-size: 2rem;
+}
+
+.totalTextTitle {
+  font-weight: 600;
+}
+
+.button {
+  margin-top: 1rem;
+  background: var(--sc);
+  color: var(--wht);
+  border: none;
+  padding: 0.9rem;
+  border-radius: 8px;
+  cursor: not-allowed;
+  font-weight: 600;
+}
+
+/* ===========================
+   🔹 Responsive
+=========================== */
+
+/* Tablets (≤1024px) */
+@media (max-width: 1024px) {
+  .container {
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .left,
+  .right {
+    flex: 1 1 100%;
+  }
+
+  .table {
+    font-size: 0.9rem;
+  }
+
+  .totalLast {
+    font-size: 1.5rem;
+  }
+}
+
+/* Mobile (≤768px) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .table,
+  .wrapper,
+  .delivery {
+    box-shadow: none;
+  }
+
+  .right {
+    min-width: 100%;
+  }
+
+  /* Stacked table */
+  .table,
+  .tr,
+  .trTitle,
+  .tr td,
+  .tr th {
+    display: block;
+    width: 100%;
+  }
+
+  .trTitle {
+    display: none;
+  }
+
+  .tr {
+    margin-bottom: 1rem;
+    border: 1px solid var(--lg);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--blk);
+    background: var(--wht);
+    padding: 0.75rem;
+  }
+
+  .tr td {
+    border: none;
+    padding: 0.5rem 0;
+    text-align: left;
+    position: relative;
+  }
+
+  .tr td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--sc);
+    display: block;
+    margin-bottom: 0.2rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Small Mobile (≤480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+
+  .tr td,
+  .tr th {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .item {
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .itemTitle {
+    font-size: 1rem;
+  }
+
+  .extras {
+    gap: 0.3rem;
+  }
+
+  .extra {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .totalLast {
+    font-size: 1.3rem;
+  }
+
+  .button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+}
+/* Remove rigid min-widths on smaller screens */
+@media (max-width: 1024px) {
+  .table {
+    min-width: unset; /* allow shrinking */
+  }
+}
+
+@media (max-width: 768px) {
+  .right {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .item,
+  .wrapper,
+  .delivery,
+  .table-wrapper {
+    width: 100%; /* take full width of screen */
+    max-width: 100%; /* prevent overflow */
+  }
+}
+
+/* Extra safety for very narrow screens */
+@media (max-width: 480px) {
+  .item {
+    flex-direction: column;
+    align-items: stretch; /* let content fill width */
+  }
+
+  .tr {
+    padding: 0.5rem;
+  }
+}

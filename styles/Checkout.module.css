@@ -1,0 +1,457 @@
+/* Container */
+.container {
+  padding: 40px 20px;
+  font-family: var(--sf);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  color: var(--blk);
+  background-color: var(--pc);
+}
+
+/* Top Actions */
+.topActions {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center the title */
+  position: relative; /* for absolute positioning of back button */
+}
+
+/* Back button always left */
+.backButton {
+  position: absolute;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 30px;
+  color: var(--sc);
+  transition:
+    transform 0.2s,
+    color 0.2s;
+}
+
+/* Title centered */
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--sc);
+  text-align: center;
+  margin: 0;
+}
+.backButton:hover {
+  transform: translateX(-5px);
+  color: var(--sc);
+}
+
+.guest input[type='checkbox'] {
+  width: 20px; /* optional, for some browsers */
+  height: 20px; /* optional, for some browsers */
+  transform: scale(1.25); /* increase size */
+  margin-right: 8px; /* space between checkbox and label text */
+  cursor: pointer;
+}
+
+.guest {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+/* Cards */
+.userInfo,
+.deliveryCard,
+.cartItems,
+.orderSummary,
+.payButtons {
+  background: var(--wht);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px var(--lg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Section Titles */
+.userInfo h2,
+.deliveryCard h2,
+.cartItems h2,
+.orderSummary h2,
+.payButtons h2,
+.payButtons h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--sc);
+  margin-bottom: 15px;
+}
+
+/* Form Fields */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field label {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--blk);
+}
+.field input,
+.field select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--lg);
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.field input:focus,
+.field select:focus {
+  border-color: var(--sc);
+  outline: none;
+}
+
+/* Input with Icon */
+.inputWithIcon {
+  position: relative;
+}
+.inputWithIcon .icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+}
+.inputWithIcon input,
+.inputWithIcon select {
+  padding-left: 35px;
+}
+
+/* Cart Table */
+.cartTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.cartTable th,
+.cartTable td {
+  padding: 12px;
+  border-bottom: 1px solid var(--lg);
+  text-align: left;
+  vertical-align: middle;
+}
+.cartTable th {
+  font-weight: 600;
+  color: var(--dg);
+}
+.cartTable td img {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Delivery Grid */
+.deliveryGrid {
+  display: flex;
+  gap: 20px;
+
+  div {
+    margin-right: 2rem;
+  }
+}
+
+/* Order Summary */
+.orderSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.orderSummaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: var(--blk);
+}
+.total {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--sc);
+}
+
+/* Coupon Section */
+.couponSection {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between input and button */
+  margin: 10px 0;
+  max-width: 450px; /* limit width */
+}
+
+.couponSection input {
+  flex: 1; /* input takes remaining space */
+  padding: 6px 10px;
+  font-size: 18px;
+  border: 1px solid var(--lg);
+  border-radius: 8px;
+  max-width: 90px;
+}
+
+.couponSection button {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--sc);
+  color: var(--wht);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.couponSection button:disabled {
+  background-color: var(--pc);
+  cursor: not-allowed;
+}
+
+.couponSection button:hover:not(:disabled) {
+  background-color: var(--sc);
+}
+
+.couponSuccess {
+  color: green;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.couponError {
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* Payment Buttons Card */
+.payButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+/* Shipping */
+.freeShipping {
+  color: green;
+  font-weight: 600;
+}
+.shippingNote,
+.shippingSaved {
+  font-size: 13px;
+  color: var(--dg);
+  margin-top: 5px;
+}
+
+/* Payment Buttons */
+.payButtons {
+  display: flex;
+  gap: 20px;
+}
+.paymentOption1,
+.paymentOption2 {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 10px;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.paymentOption1:hover,
+.paymentOption2:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px var(--dg);
+}
+
+.whomSection,
+.notesSection {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.whomSection h2,
+.notesSection h2 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.whomSection textarea,
+.notesSection textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--lg);
+  font-size: 1rem;
+  resize: vertical;
+}
+.inputWithIcon {
+  display: flex;
+  align-items: center;
+}
+
+.inputWithIcon .icon {
+  margin-right: 8px;
+  color: var(--sc);
+}
+
+.inputWithIconLarge {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--sc);
+  border-radius: 8px;
+  padding: 0.25rem;
+  background-color: var(--pc);
+  font-size: 1.2rem; /* bigger text */
+}
+
+.inputWithIconLarge .iconLarge {
+  font-size: 1.5rem; /* bigger icon */
+  margin-right: 0.8rem;
+  color: var(--sc);
+}
+
+.inputWithIconLarge input,
+.inputWithIconLarge select {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  background-color: transparent;
+}
+
+.checkoutWrapper {
+  position: relative;
+}
+
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7); /* dim background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--sc);
+  color: var(--wht);
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 1rem;
+}
+
+.loginPrompt {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Mobile Cart Cards */
+@media screen and (max-width: 768px) {
+  .deliveryGrid {
+    flex-direction: column;
+  }
+  .payButtons {
+    flex-direction: column;
+  }
+  .cartTable {
+    display: none; /* hide table on mobile */
+  }
+
+  .cartItems .cartCard {
+    display: flex;
+    flex-direction: column;
+    background: var(--wht);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 12px var(--dg);
+    margin-bottom: 15px;
+    gap: 10px;
+  }
+
+  .cartItems .cartCardTop {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .cartItems .cartCardTop img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .cartItems .cartCardInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .cartItems .cartCardInfo .title {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--blk);
+  }
+
+  .cartItems .cartCardInfo .extras span {
+    font-size: 13px;
+    color: var(--lg);
+    margin-right: 6px;
+  }
+
+  .cartItems .cartCardBottom {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  .couponSection {
+    padding: 12px;
+  }
+  .couponSection input {
+    font-size: 13px;
+  }
+  .couponSection button {
+    font-size: 14px;
+  }
+
+  .payButtons {
+    gap: 12px;
+  }
+
+  .paymentOption1,
+  .paymentOption2 {
+    padding: 10px;
+  }
+}
+.cartCardList {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .cartCardList {
+    display: block;
+  }
+}

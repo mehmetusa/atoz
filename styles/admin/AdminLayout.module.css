@@ -1,0 +1,80 @@
+.adminContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  font-family: var(--sf);
+  background-color: var(--lg);
+  padding: 1rem;
+}
+
+.sidePanel {
+  background-color: var(--pc);
+  color: var(--sc);
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 8px;
+}
+
+.sidePanel h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--pc);
+}
+
+.sidePanel button {
+  background: transparent;
+  border: none;
+  color: var(--blk);
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  text-align: left;
+  transition: background 0.3s;
+  margin-right: 1rem;
+}
+
+.sidePanel button:hover {
+  background-color: var(--pc);
+}
+
+.activeTab {
+  background-color: var(--sc) !important;
+}
+
+.logoutButtonSide {
+  margin-top: auto;
+  background-color: var(--sc);
+  color: var(--wht) !important;
+  font-weight: bold;
+}
+
+.logoutButtonSide:hover {
+  background-color: var(--sc);
+}
+
+.mainContent {
+  flex: 1;
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .adminContainer {
+    flex-direction: column;
+  }
+  .sidePanel {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    overflow-x: auto;
+    padding: 10px;
+  }
+  .sidePanel button {
+    flex: 1;
+    margin: 0 5px;
+    text-align: center;
+  }
+}

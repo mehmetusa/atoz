@@ -1,0 +1,115 @@
+/* Live Search Container */
+.searchContainer {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Search Input */
+.liveSearchInput {
+  width: 100%;
+  padding: 10px 40px 10px 14px; /* space for icon */
+  border-radius: 8px;
+  border: 1.5px solid var(--sc);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+.liveSearchInput:focus {
+  outline: none;
+  border-color: var(--sc);
+  box-shadow: 0 0 8px var(--pc);
+}
+
+/* Search Icon */
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  color: var(--sc);
+  font-size: 16px;
+  pointer-events: none;
+}
+
+/* Results Dropdown */
+.results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 5px;
+  border: 1px solid var(--lg);
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  background: var(--dg);
+  z-index: 1000;
+  box-shadow: 0 4px 8px var(--blk);
+  padding: 0;
+}
+
+/* Each Result */
+.results li {
+  list-style: none;
+  cursor: pointer;
+  /* border-bottom: 1px solid var(--lg); */
+  transition: background 0.2s ease;
+}
+.results li:hover {
+  background-color: var(--pc);
+}
+
+/* Link wrapper */
+.resultLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  width: 100%;
+  text-decoration: none;
+  color: var(--blk);
+}
+
+/* Title */
+.resultTitle {
+  font-weight: 500;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+/* Price */
+.resultPrice {
+  font-size: 12px;
+  color: var(--sc);
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+/* Category badge */
+.resultCategory {
+  font-size: 10px;
+  background-color: var(--pc);
+  color: var(--sc);
+  padding: 2px 6px;
+  border-radius: 8px;
+  text-transform: capitalize;
+  white-space: nowrap;
+  margin-left: 8px;
+}
+
+/* Responsive: stack Price + Category on mobile */
+@media screen and (max-width: 768px) {
+  .searchContainer {
+    width: 90%;
+    margin: 10px auto;
+  }
+
+  .resultLink {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

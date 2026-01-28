@@ -1,0 +1,105 @@
+/* Users.module.css */
+
+/* Title */
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--sc);
+  margin-bottom: 20px;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--bc);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 15px var(--blk);
+  margin-bottom: 25px;
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--bc);
+  vertical-align: top;
+}
+
+.table th {
+  background-color: var(--pc);
+  font-weight: bold;
+  color: var(--blk);
+}
+
+.table tr:hover {
+  background-color: var(--bc);
+}
+
+/* Buttons */
+.button {
+  padding: 6px 12px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: var(--sc);
+  color: var(--bc);
+  transition:
+    background 0.3s,
+    transform 0.2s;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+/* Addresses */
+.address {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: var(--blk);
+}
+
+.address strong {
+  color: var(--sc);
+}
+
+/* Expanded Orders Section */
+.userOrdersContainer {
+  margin-top: 20px;
+}
+
+.userOrdersContainer h3 {
+  font-size: 20px;
+  color: var(--sc);
+  margin-bottom: 10px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .button {
+    padding: 5px 8px;
+    font-size: 13px;
+  }
+
+  .address {
+    font-size: 12px;
+  }
+
+  .userOrdersContainer h3 {
+    font-size: 16px;
+  }
+}
