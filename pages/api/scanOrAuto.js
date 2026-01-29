@@ -1,7 +1,7 @@
 // pages/api/scanOrAuto.js
 import { getCachedProduct, setCachedProduct } from '../../lib/redis';
-import { db } from '../../lib/mongo';
-import { callKeepaAPI, calculateFees, estimateShipping } from '../../lib/keepaUtils';
+import { getDB }  from '../../lib/mongo';
+import { callKeepaAPI, calculateFees, estimateShipping } from '../api/lib/keepaUtils';
 import { addToQueue } from '../../lib/keepaQueue';
 
 export default async function handler(req, res) {
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     const marketEU = "DE";
 
     // 1️⃣ Duplicate Check MongoDB
-    const duplicate = await db.collection('products').findOne({
+    const duplicate = await getDB.collection('products').findOne({
         upc,
         market: marketEU,
         mode,
@@ -33,7 +33,7 @@ export default async function handler(req, res) {
 
     // 3️⃣ US Pre-filter
     if(productUS.rank > 20000 || productUS.hazmat) {
-        await db.collection('products').updateOne(
+        await getDB.collection('products').updateOne(
             { upc, market: marketUS, mode },
             { $set: { status: "filtered" } },
             { upsert: true }
@@ -76,7 +76,7 @@ export default async function handler(req, res) {
         mode
     };
 
-    await db.collection('products').updateOne(
+    await getDB.collection('products').updateOne(
         { upc, market: marketEU, mode },
         { $set: productData },
         { upsert: true }

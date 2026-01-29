@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../redux/cartSlice';
-import dbConnect from '../utils/mongo';
+import { getDB}  from '../lib/mongo';
 import styles from '../styles/Home.module.css';
 
 export default function Home({ products }) {
@@ -120,7 +120,7 @@ export default function Home({ products }) {
 // Fetch products server-side
 export async function getServerSideProps() {
   try {
-    await dbConnect();
+    await getDB();
     const products = await Product.find({}).lean();
 
     // Serialize dates to pass to React

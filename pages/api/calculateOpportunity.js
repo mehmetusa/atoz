@@ -1,15 +1,14 @@
 // pages/api/calculateOpportunity.js
 import { getCachedProduct, setCachedProduct } from '../../lib/redis';
-import { db } from '../../lib/mongo';
-import { callKeepaAPI, calculateFees, estimateShipping } from '../../lib/keepaUtils';
-
+import { getDB }  from '../../lib/mongo';
+import { callKeepaAPI, calculateFees, estimateShipping } from '../api/lib/keepaUtils';
 export default async function handler(req, res) {
     const { upc } = req.body;
     const marketUS = "US";
     const marketEU = "DE";
 
     // 1️⃣ MongoDB duplicate check
-    const duplicate = await db.collection('products').findOne({ upc, market: marketEU, status: "shown" });
+    const duplicate = await getDB.collection('products').findOne({ upc, market: marketEU, status: "shown" });
     if(duplicate) return res.json({ message: "Already scanned", product: duplicate });
 
     // 2️⃣ Redis cache check US
@@ -18,7 +17,7 @@ export default async function handler(req, res) {
 
     // 3️⃣ US pre-filter
     if(productUS.rank > 20000 || productUS.hazmat) {
-        await db.collection('products').updateOne(
+        await getDB.collection('products').updateOne(
             { upc, market: marketUS },
             { $set: { status: "filtered" } },
             { upsert: true }
@@ -60,7 +59,7 @@ export default async function handler(req, res) {
         opportunityScore
     };
 
-    await db.collection('products').updateOne(
+    await getDB.collection('products').updateOne(
         { upc, market: marketEU },
         { $set: productData },
         { upsert: true }

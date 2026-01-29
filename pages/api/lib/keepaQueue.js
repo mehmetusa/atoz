@@ -1,14 +1,14 @@
 // lib/keepaQueue.js
 import Queue from 'bull';
 import { getCachedProduct, setCachedProduct } from './redis.js';
-import { getDB } from './mongo.js';
+import  { getDB }  from '../lib/mongo.js';
 import { callKeepaAPI, calculateFees, estimateShipping, calculateRiskMultiplier } from './keepaUtils.js';
 
 const keepaQueue = new Queue('keepaQueue', { redis: { host: 'localhost', port: 6379 } });
 
 keepaQueue.process(5, async job => {
     const { upc, market, mode } = job.data;
-    const db = await getDB();
+   // const db = await getDB();
 
     let productUS = await getCachedProduct(`${upc}:US`);
     if(!productUS) productUS = await callKeepaAPI(upc, "US");
@@ -43,7 +43,7 @@ keepaQueue.process(5, async job => {
         mode
     };
 
-    await db.collection('products').updateOne(
+    await getDB.collection('products').updateOne(
         { upc, market: "DE", mode },
         { $set: productData },
         { upsert: true }

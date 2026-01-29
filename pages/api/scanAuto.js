@@ -1,5 +1,5 @@
 import { addToQueue } from '../../lib/keepaQueue.js';
-import { getDB } from '../../lib/mongo.js';
+import { getDB }  from '../../lib/mongo.js';
 
 export default async function handler(req, res) {
   const { category } = req.body;

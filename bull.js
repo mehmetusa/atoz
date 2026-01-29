@@ -1,6 +1,6 @@
 const Queue = require('bull');
 const { getCachedProduct, setCachedProduct } = require('./redis');
-const { db } = require('./mongo');
+
 const { callKeepaAPI } = require('./keepaUtils');
 
 const keepaQueue = new Queue('keepaQueue', { redis: { host: 'localhost', port: 6379 } });
