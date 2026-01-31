@@ -68,3 +68,24 @@ export default async function handler(req, res) {
       return res.status(405).json({ error: `Method ${req.method} not allowed` });
   }
 }
+// // /pages/api/user/[email].js
+// import connect from "../../../lib/mongo";
+// import User from "../../../models/User";
+
+// export default async function handler(req, res) {
+//   await connect();
+
+//   const { email } = req.query;
+
+//   if (!email) return res.status(400).json({ error: "Email gerekli" });
+
+//   try {
+//     const user = await User.findOne({ email });
+//     if (!user) return res.status(404).json({ error: "User bulunamadı" });
+
+//     res.status(200).json(user);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ error: "Server error" });
+//   }
+// }

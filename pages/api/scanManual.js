@@ -1,9 +1,11 @@
-import { addToQueue } from '../../lib/keepaQueue.js';
+import { addToQueue } from "../../lib/keepaQueue.js";
 
 export default async function handler(req, res) {
-  const { upc } = req.body;
-  if(!upc) return res.status(400).json({ error: "UPC required" });
+  if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
-  await addToQueue(upc);
-  res.status(200).json({ message: "Scan queued!" });
+  const { upc } = req.body;
+  if (!upc) return res.status(400).json({ error: "UPC required" });
+
+  await addToQueue(upc, "manual"); // manual mode
+  res.status(200).json({ upc, message: "Added to queue" });
 }

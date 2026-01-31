@@ -46,3 +46,42 @@ export function calculateRiskMultiplier(upcMatch, titleMatch, variation, hazmat,
     if(brandGated) multiplier *= 0.3;
     return multiplier;
 }
+
+
+const BRAND_WHITELIST = ["Apple", "Samsung", "Sony"];
+const BRAND_BLACKLIST = ["FakeBrand", "UnknownBrand"];
+const MAX_RANK = 20000;
+
+// Keepa API toplu category fetch
+export async function callKeepaCategoryAPI(category) {
+  // Keepa Category API örneği
+  // domain=1 => US Amazon
+  const url = `https://api.keepa.com/category?key=${process.env.KEEPA_API_KEY}&domain=1&category=${category}`;
+  const res = await fetch(url);
+  const data = await res.json();
+
+  if (!data.products) return [];
+
+  return data.products.map(p => ({
+    asin: p.asin,
+    upc: p.upc,
+    title: p.title,
+    brand: p.brand,
+    buyBoxPrice: p.buyBoxPrice || 0,
+    rank: p.salesRank ? p.salesRank[0]?.rank || 999999 : 999999,
+    hazmat: p.hazmat || false,
+    variationHash: p.variationHash,
+  }));
+}
+
+// Filtreleme: token tasarrufu için
+export function filterProduct(p) {
+  if (!p.upc) return false; // UPC yoksa atla
+  if (p.rank > MAX_RANK) return false; // rank çok düşük
+  if (p.hazmat) return false; // tehlikeli ürün
+  if (BRAND_WHITELIST.length && !BRAND_WHITELIST.includes(p.brand)) return false;
+  if (BRAND_BLACKLIST.includes(p.brand)) return false;
+  if (!p.buyBoxPrice || p.buyBoxPrice <= 0) return false; // buyBox yok
+  return true;
+}
+
